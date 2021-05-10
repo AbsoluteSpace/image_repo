@@ -1,0 +1,54 @@
+<%= form_with model: discount do |form| %>
+
+  <div>
+    <%= form.label :all_tags %><br>
+    <%= form.check_box :all_tags %><br>
+    <% discount.errors.full_messages_for(:all_tags).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :tags %><br>
+    <%= form.text_area :tags %><br>
+    <% discount.errors.full_messages_for(:tags).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :discount_type %><br>
+    <%= form.check_box :discount_type %><br>
+    <% discount.errors.full_messages_for(:discount_type).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :amount_discount %><br>
+    <%= form.number_field :amount_discount, step: 0.01 %><br>
+    <% discount.errors.full_messages_for(:amount_discount).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :percentage_discount %><br>
+    <%= form.number_field :percentage_discount, step: 1 %><br>
+    <% discount.errors.full_messages_for(:percentage_discount).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  
+  <div>
+    <%= form.label :active %><br>
+    <%= form.check_box :active %><br>
+    <% discount.errors.full_messages_for(:active).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>

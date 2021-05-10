@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: "images#index"
+  devise_for :users
+  
+  resources :images
+  resources :discounts
+  get '/admin', to: "pages#admin"
+  get '/about', to: "pages#about"
+  get '/confirmed', to: "pages#home"
+  get '/images/purchase/:id', to: "images#purchase"
 end

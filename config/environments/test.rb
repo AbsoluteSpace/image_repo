@@ -8,6 +8,8 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.active_record.maintain_test_schema = true
+  
   config.cache_classes = true
 
   # Do not eager load code on boot. This avoids loading your whole application

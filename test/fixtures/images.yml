@@ -1,0 +1,17 @@
+valid:
+  title: Book_-1
+  body: body
+  tags: ["book", "long"]
+  price: 20.00
+  file_location: /img/book
+  discount_price: 0
+  discount: false
+  discounts: ""
+
+discounted:
+  title: discount_book
+  body: body
+  tags: ["discount", "book"]
+  price: 9.99
+  discount_price: 5.00
+  discount: true

@@ -1,0 +1,15 @@
+percent_discount:
+  discount_type: true
+  amount_discount: 0.00
+  percentage_discount: 15
+  tags: ["book"]
+  all_tags: false
+  active: true
+
+amount_discount:
+  discount_type: false
+  amount_discount: 9.99
+  percentage_discount: 0.00
+  tags: ["book"]
+  all_tags: false
+  active: true

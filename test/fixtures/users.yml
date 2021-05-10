@@ -1,0 +1,8 @@
+user:
+  email: user@email.com
+  encrypted_password: password
+  admin: false
+admin:
+  email: admin@email.com
+  encrypted_password: admin1
+  admin: true
