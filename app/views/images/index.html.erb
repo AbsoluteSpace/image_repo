@@ -1,5 +1,9 @@
 <%= render "shared/header" %>
 
+<div class="body">
+  <h2>Click on an image for more information</h2>
+</div>
+
 <section id="photos">
   <% @images.each do |image| %>
     <a href="/images/<%=image.id%>">

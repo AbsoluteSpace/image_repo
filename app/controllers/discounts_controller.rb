@@ -42,12 +42,11 @@ class DiscountsController < ApplicationController
 
     def destroy
         @discount = Discount.find(params[:id])
-        @discount.active = false
+        @discount.update_attribute(:active, false)
         update_site_discounts(@discount)
         @discount.destroy
     
-        # maybe change this redirect to the discount list page, same with after editing one
-        redirect_to root_path
+        redirect_to action: "index"
       end
 
     private
@@ -59,7 +58,7 @@ class DiscountsController < ApplicationController
         Image.find_each do |image|
 
             unless discount.active
-                unless image.discounts.to_i == discount.id
+                if image.discounts.to_i != discount.id && !discount.all_tags 
                     next
                 end
                 largest_discount, discount_id = largest_discount_for_image(image, true)
@@ -73,16 +72,7 @@ class DiscountsController < ApplicationController
             end
 
             if discount.all_tags
-                discount_amount = calculate_discount(discount, image)
-                current_discount = image.price - image.discount_price
-                current_discount = 0 if image.discount_price == 0
-                largest_discount = discount_amount > current_discount ? discount_amount : current_discount
-
-                if largest_discount > 0
-                    image.update_attribute(:discount, true)
-                    image.update_attribute(:discounts, discount.id)
-                    image.update_attribute(:discount_price, image.price - largest_discount > 0 ? image.price - largest_discount : 0)
-                end
+                update_image_discount(discount, image) 
                 next
             end
 
@@ -90,20 +80,29 @@ class DiscountsController < ApplicationController
                 next
             end
 
-            if (discount.tags.split(",").map!{|s| s.tr("[\"] ", "")} & image.tags.split(",").map!{|s| s.tr("[\"] ", "")}).empty?
+            if (split_tags(discount.tags) & split_tags(image.tags)).empty?
                 next
             end
 
-            discount_amount = calculate_discount(discount, image)
+            update_image_discount(discount, image) 
+        end
+    end
+
+    def update_image_discount(discount, image) 
+        discount_amount = calculate_discount(discount, image)
+
+        unless image.discount_price.nil?
             current_discount = image.price - image.discount_price
             current_discount = 0 if image.discount_price == 0
             largest_discount = discount_amount > current_discount ? discount_amount : current_discount
+        else 
+            largest_discount = discount_amount
+        end
 
-            if largest_discount > 0
-                image.update_attribute(:discount, true)
-                image.update_attribute(:discounts, discount.id)
-                image.update_attribute(:discount_price, image.price - largest_discount > 0 ? image.price - largest_discount : 0)
-            end
+        if largest_discount > 0
+            image.update_attribute(:discount, true)
+            image.update_attribute(:discounts, discount.id)
+            image.update_attribute(:discount_price, image.price - largest_discount > 0 ? image.price - largest_discount : 0)
         end
     end
 end

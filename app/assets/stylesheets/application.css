@@ -4,6 +4,12 @@ html, body {
     line-height: 1.6;
 }
 
+.body {
+    margin: auto;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
 header {
     margin-bottom: 70px;
     text-align: center;
@@ -27,13 +33,13 @@ header ul li {
     margin: 0 5px;
 }
 
-small {
-    font-size: 90%;
-}
-
 header li.logo-title {
     font-family: 'Permanent Marker', cursive;
     font-size: 1.2rem;
+}
+
+small {
+    font-size: 90%;
 }
 
 .active-discount {
@@ -41,5 +47,11 @@ header li.logo-title {
 }
 
 .inactive-discount {
-    color: darkred;
+    color: red;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

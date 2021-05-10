@@ -1,7 +1,9 @@
+<%= render "shared/tooltip_warning" %>
+
 <%= form_with model: discount do |form| %>
 
   <div>
-    <%= form.label :all_tags %><br>
+    <span title="Check if the discount should apply to all tags."><%= form.label :all_tags %></span><br>
     <%= form.check_box :all_tags %><br>
     <% discount.errors.full_messages_for(:all_tags).each do |message| %>
       <div><%= message %></div>
@@ -9,7 +11,7 @@
   </div>
 
   <div>
-    <%= form.label :tags %><br>
+    <span title="Tags the discount will apply to. Format like: [&#34;tag1&#34;, &#34;tag2&#34;]"><%= form.label :tags %></span><br>
     <%= form.text_area :tags %><br>
     <% discount.errors.full_messages_for(:tags).each do |message| %>
       <div><%= message %></div>
@@ -17,7 +19,7 @@
   </div>
 
   <div>
-    <%= form.label :discount_type %><br>
+    <span title="Check if you want to use a percentage based discount. Uncheck for amount based."><%= form.label :discount_type %></span><br>
     <%= form.check_box :discount_type %><br>
     <% discount.errors.full_messages_for(:discount_type).each do |message| %>
       <div><%= message %></div>
@@ -25,7 +27,7 @@
   </div>
 
   <div>
-    <%= form.label :amount_discount %><br>
+    <span title="Enter dollar amount to discount."><%= form.label :amount_discount %></span><br>
     <%= form.number_field :amount_discount, step: 0.01 %><br>
     <% discount.errors.full_messages_for(:amount_discount).each do |message| %>
       <div><%= message %></div>
@@ -33,7 +35,7 @@
   </div>
 
   <div>
-    <%= form.label :percentage_discount %><br>
+    <span title="Enter percentage to discount."><%= form.label :percentage_discount %></span><br>
     <%= form.number_field :percentage_discount, step: 1 %><br>
     <% discount.errors.full_messages_for(:percentage_discount).each do |message| %>
       <div><%= message %></div>
@@ -41,7 +43,7 @@
   </div>
   
   <div>
-    <%= form.label :active %><br>
+    <span title="Check if you want the discount to take effect. Otherwise uncheck."><%= form.label :active %></span><br>
     <%= form.check_box :active %><br>
     <% discount.errors.full_messages_for(:active).each do |message| %>
       <div><%= message %></div>

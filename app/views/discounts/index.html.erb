@@ -1,6 +1,14 @@
 <%= render "shared/header" %>
 
 <section>
+
+<div class="body">
+  <% if @discounts.length == 0%>
+    <p>No discounts to show.</p>
+  <% end %>
+  <p>Note: When multiple discounts apply to an image, the discount that provides the largest price reduction is used.</p>
+  </div>
+
   <% @discounts.each do |discount| %>
     <div>
     <h1>Discount <%= discount.id %></h1>

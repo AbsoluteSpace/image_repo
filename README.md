@@ -5,6 +5,7 @@ My image repository is an online store where users can browse the store owner's 
 With my project I wanted to focus on how it could help **make commerce better for everyone**, and the best way I felt I could represent that was by making the store as accessable as I can. I've done this by:
 - adding alt-text to all important images, and [considering whether alt-text conveys valuable information](https://ux.shopify.com/writing-for-all-people-how-to-use-alternative-text-well-1205a18307a1#.izw9gzaa9) for each one as opposed to merely a description of a decorative image.
 - Making the site as easy to navigate as possible with descriptive tabs, text suggestions on certain pages to help users who aren't sure how to interact with the site, and large print actions such as "ORDER CONFIRMED" to provide the most important information clearly for as many users as possible.
+- The ability to zoom in on images when viewing their details for those with trouble seeing.
 - A clean style to make things feel approachable and efficient.
 
 These carry over to my design of the admin actions for the store owner as well.
@@ -26,7 +27,11 @@ As a customer:
 ## How to Run
 
 - Clone the git repo.
-- The application can be run with `bin/rails serve` in the downloaded directory.
+- Navigate into the downloaded directory.
+- Migrate the database with `bin/rails db:migrate RAILS_ENV=development`.
+- Seed the database with `rake db:seed`.
+- Run `yarn install` in the same directory.
+- The application can be run with `bin/rails serve` in the downloaded directory. It may take a little bit of time on the first run, but after that it's speedy.
 - Navigate on your browser to `http://localhost:3000/`
 
 ### How to see a lot of the cool features:

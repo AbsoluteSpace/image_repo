@@ -1,6 +1,8 @@
+<%= render "shared/tooltip_warning" %>
+
 <%= form_with model: image do |form| %>
     <div>
-      <%= form.label :title %><br>
+    <span title="Title of the image."><%= form.label :title %></span><br>
       <%= form.text_field :title %>
       <% image.errors.full_messages_for(:title).each do |message| %>
         <div><%= message %></div>
@@ -8,7 +10,7 @@
     </div>
   
     <div>
-      <%= form.label :body %><br>
+    <span title="Description of the image. Used for alt-text."><%= form.label :body %></span><br>
       <%= form.text_area :body %><br>
       <% image.errors.full_messages_for(:body).each do |message| %>
         <div><%= message %></div>
@@ -16,7 +18,7 @@
     </div>
 
     <div>
-      <%= form.label :tags %><br>
+    <span title="The image's tags. Format like: [&#34;tag1&#34;, &#34;tag2&#34;]"><%= form.label :tags %></span><br>
       <%= form.text_area :tags %><br>
       <% image.errors.full_messages_for(:tags).each do |message| %>
         <div><%= message %></div>
@@ -24,7 +26,7 @@
     </div>
 
     <div>
-      <%= form.label :price %><br>
+    <span title="The price of the image in dollars."><%= form.label :price %></span><br>
       <%= form.number_field :price, step: 0.01 %><br>
       <% image.errors.full_messages_for(:price).each do |message| %>
         <div><%= message %></div>
@@ -32,7 +34,7 @@
     </div>
 
     <div>
-      <%= form.label :discount_price %><br>
+    <span title="The discounted price of the image. Only used if discount checkbox is ticked. If more than one discount applies, the larger is used."><%= form.label :discount_price %></span><br>
       <%= form.number_field :discount_price, step: 0.01 %><br>
       <% image.errors.full_messages_for(:discount_price).each do |message| %>
         <div><%= message %></div>
@@ -40,7 +42,7 @@
     </div>
 
     <div>
-      <%= form.label :discount %><br>
+    <span title="Check to enable the discount price above. Enabled if a site-wide discount applies."><%= form.label :discount %></span><br>
       <%= form.check_box :discount %><br>
       <% image.errors.full_messages_for(:discount).each do |message| %>
         <div><%= message %></div>
@@ -48,7 +50,7 @@
     </div>
 
     <div>
-      <%= form.label :file_location %><br>
+    <span title="Filepath to the image."><%= form.label :file_location %></span><br>
       <%= form.text_area :file_location %><br>
       <% image.errors.full_messages_for(:file_location).each do |message| %>
         <div><%= message %></div>

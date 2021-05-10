@@ -22,16 +22,14 @@
   </p>
 <% end %>
 
-<ul>
 <% unless (current_user.nil? || !current_user.admin?)%>
-  <li><%= link_to "Edit", edit_image_path(@image) %></li>
-  <li><%= link_to "Destroy", image_path(@image),
+<%= link_to "Edit", edit_image_path(@image) %>
+<%= link_to "Destroy", image_path(@image),
                   method: :delete,
-                  data: { confirm: "Are you sure?" } %></li>
+                  data: { confirm: "Are you sure?" } %>
                   <% end %>
-  <li><a href="/images/purchase/<%= @image.id%>">Purchase</a></li>
-</ul>
+<a href="/images/purchase/<%= @image.id%>">Purchase</a>
 </div>
-<div class="column">
+<div class="column zoom">
   <img src="<%= @image.file_location%>" alt="<%=@image.body%>">
 </div>

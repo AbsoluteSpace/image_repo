@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
                 next
             end
 
-            if (discount.tags.split(",").map!{|s| s.tr("[\"] ", "")} & image.tags.split(",").map!{|s| s.tr("[\"] ", "")}).empty?
+            if (split_tags(discount.tags) & split_tags(image.tags)).empty?
                 next
             end
 
@@ -44,6 +44,10 @@ class ApplicationController < ActionController::Base
 
     def verify_is_admin
         (current_user.nil?) ? redirect_back(fallback_location: "/") : (redirect_back(fallback_location: "/") unless current_user.admin?)
+    end
+
+    def split_tags(tags)
+        tags.split(",").map!{|s| s.tr("[\"] ", "")}
     end
 
 end

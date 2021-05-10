@@ -22,7 +22,6 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     get "/images/new"
     assert_response :redirect
     assert_redirected_to "/"
-    # assert_redirected_to @article
   end
 
   test "should get show" do

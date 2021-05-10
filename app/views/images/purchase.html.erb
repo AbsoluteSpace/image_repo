@@ -1,5 +1,6 @@
 <%= render "shared/header" %>
 
+<div class="body">
 <h1>Confirm purchase of: <%= @image.title %> for
 <% if @image.discount %>
   $<%= @image.discount_price %>
@@ -8,16 +9,19 @@
 <% end %>
 </h1>
 
-<p>Fortunately the interviewer discount reduces the price by 
+<p>The interviewer discount reduces the price by 
 <% if @image.discount %>
   $<%= @image.discount_price %>.
 <% else %>
   $<%= @image.price %>.
 <% end %>
-</p><p>
-Your new total is $0.00, please enter your email below and click enter to complete your purchase.</p>
+Your new total is $0.00.</p>
+<p>Please enter the email you want the digital copy of <%= @image.title %> to be sent to, and the hit Enter.</p>
 
 <label for="email">Please enter your email:</label>
 <input type="email" id="email" name="email">
 
 <a href="/confirmed">Enter</a>
+</div>
+
+<%= render "shared/footer" %>

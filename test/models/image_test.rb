@@ -38,6 +38,4 @@ class ImageTest < ActiveSupport::TestCase
     refute @image.valid?, 'image can have invalid title'
     assert_not_nil @image.errors[:name], 'no validation error for title present'
   end
-
-  # want test for invalid tags
 end
