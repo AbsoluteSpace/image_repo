@@ -31,7 +31,7 @@ As a customer:
 - Migrate the database with `bin/rails db:migrate RAILS_ENV=development`.
 - Seed the database with `rake db:seed`.
 - Run `yarn install` in the same directory.
-- The application can be run with `bin/rails serve` in the downloaded directory. It may take a little bit of time on the first run, but after that it's speedy.
+- The application can be run with `bin/rails serve` (or `rails s` if you get an error) in the downloaded directory. It may take a little bit of time on the first run, but after that it's speedy.
 - Navigate on your browser to `http://localhost:3000/`
 
 ### How to see a lot of the cool features:
