@@ -1,0 +1,9 @@
+<%= render "shared/header" %>
+
+<section id="photos">
+  <% @images.each do |image| %>
+    <a href="/images/<%=image.id%>">
+      <img src="<%= image.file_location%>" alt="<%=image.body%>">
+    </a>
+  <% end %>
+</section>

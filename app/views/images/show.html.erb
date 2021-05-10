@@ -1,0 +1,37 @@
+<%= render "shared/header" %>
+<div>
+<h1><%= @image.title %></h1>
+
+<% if @image.discount %>
+  <p>Price: <strike>$<%= @image.price %></strike> $<span class="discount"><%= @image.discount_price %></span></p>
+<% else %>
+  <p>Price: $<%= @image.price %></p>
+<% end %>
+
+<p>Description: <%= @image.body %></p>
+
+<% unless @image.tags.nil?%>
+  <p>Tags:
+  <% @image.tags.split(",").each do |tag| %>
+    <% if tag == @image.tags.split(",").last%>
+      <%= tag.tr("[\"]", "   ") %>
+    <% else %>
+      <%= tag.tr("[]", " ").tr("\"", "") + ", "%>
+    <% end %>
+  <% end %>
+  </p>
+<% end %>
+
+<ul>
+<% unless (current_user.nil? || !current_user.admin?)%>
+  <li><%= link_to "Edit", edit_image_path(@image) %></li>
+  <li><%= link_to "Destroy", image_path(@image),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
+                  <% end %>
+  <li><a href="/images/purchase/<%= @image.id%>">Purchase</a></li>
+</ul>
+</div>
+<div class="column">
+  <img src="<%= @image.file_location%>" alt="<%=@image.body%>">
+</div>

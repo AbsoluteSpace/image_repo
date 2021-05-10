@@ -1,0 +1,61 @@
+<%= form_with model: image do |form| %>
+    <div>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+      <% image.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  
+    <div>
+      <%= form.label :body %><br>
+      <%= form.text_area :body %><br>
+      <% image.errors.full_messages_for(:body).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.label :tags %><br>
+      <%= form.text_area :tags %><br>
+      <% image.errors.full_messages_for(:tags).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.label :price %><br>
+      <%= form.number_field :price, step: 0.01 %><br>
+      <% image.errors.full_messages_for(:price).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.label :discount_price %><br>
+      <%= form.number_field :discount_price, step: 0.01 %><br>
+      <% image.errors.full_messages_for(:discount_price).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.label :discount %><br>
+      <%= form.check_box :discount %><br>
+      <% image.errors.full_messages_for(:discount).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.label :file_location %><br>
+      <%= form.text_area :file_location %><br>
+      <% image.errors.full_messages_for(:file_location).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>

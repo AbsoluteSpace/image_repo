@@ -10,15 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_192922) do
+ActiveRecord::Schema.define(version: 2021_05_09_190310) do
+
+  create_table "discounts", force: :cascade do |t|
+    t.boolean "discount_type", default: false
+    t.decimal "amount_discount", default: "0.0"
+    t.decimal "percentage_discount", default: "0.0"
+    t.text "tags", default: "[]"
+    t.boolean "all_tags", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "active", default: false
+  end
 
   create_table "images", force: :cascade do |t|
     t.string "title"
-    t.text "tags"
-    t.text "desc"
-    t.decimal "cost"
+    t.text "body"
+    t.text "tags", default: "[]"
+    t.decimal "price"
+    t.decimal "discount_price"
+    t.boolean "discount", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "file_location"
+    t.text "discounts", default: ""
   end
 
   create_table "users", force: :cascade do |t|
