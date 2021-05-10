@@ -59,8 +59,16 @@ Another way I've tried to make commerce better for everyone, is by writing code 
 
 ## Testing
 
-Tests can be run by navigating to the downloaded directory and running `bin/rails test`.
+Tests can be run by navigating to the downloaded directory and then:
+- running `bin/rails db:migrate RAILS_ENV=test`.
+- running `bin/rails test`.
 
 ## Features I want to add
 
-I'dd add more here after I see how much I'm able to finish!
+These are features that I would like to add, but have run out of time to implement.
+
+- I'd like to extract the messages used across the application to a single file `messages.rb` and then reference this file in those spots to centralize them.
+- I'd really like to paginate the image retrieval from the database to take advantage of ruby's lazy loading.
+- I would like to create an actual checkout page (or at least something better resembling one) where credit card information is also asked for and validated. I would probably create a transaction model to record these in the database.
+- I would like an email to be sent after a purchase is confirmed.
+- I'd like to tidy up the discounts page to resemble more of a table, with active ones displayed first.
